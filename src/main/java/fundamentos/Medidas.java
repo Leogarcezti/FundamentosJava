@@ -20,7 +20,7 @@ public class Medidas {
         int area = 0; // Receber o resultado dos cálculos de área
         //TODO implementar o cáculo das demais áreas
         //TODO resolver problema do while
-        while(!opcao.toUpperCase().equals("S")) {
+       //while (!opcao.toUpperCase().equals("S")) {
 
             System.out.println("Escolha o Cálculo Desejado");
             System.out.println("(1) - Area do Quadrado");
@@ -30,6 +30,7 @@ public class Medidas {
             System.out.println("(5) - Tabuada");
             System.out.println("(6) - Sequencia de Fibonacci");
             System.out.println("(7) - Contagem Regressiva");
+            System.out.println("(8) - Divisão por Zero - Try/Catch: ");
             System.out.println("(S) - Sair");
 
             opcao = entrada.nextLine(); // Leitura da opção
@@ -49,6 +50,10 @@ public class Medidas {
                 case "7":
                     contagemRegressiva();
                     break;
+                case "8":
+                    System.out.println("Você escolheu o método divisaoPorZero");
+                    divisaoPorZero();
+                    break;
                 case "s":
                 case "S":
                     System.out.println("Agradecemos pela preferência! Fui!!");
@@ -61,8 +66,7 @@ public class Medidas {
             }
         }
 
-        }
-
+   // }
 
     public static int calcularAreadoQuadrado() {
         int lado; // Tamanho do lado do quadrado
@@ -94,7 +98,7 @@ public class Medidas {
         System.out.print("Quantos números deseja calcular na sequencia? ");
         byte numero = entrada.nextByte();
 
-        switch (numero){
+        switch (numero) {
             case 0:
                 System.out.println("A sequencia está vazia!!!");
                 break;
@@ -105,7 +109,7 @@ public class Medidas {
                 int num1 = 0;
                 int num2 = 1;
                 System.out.print("Sequencia de Fibonnaci: 1 ");
-                for (byte i= 2; i <= numero; i++){
+                for (byte i = 2; i <= numero; i++) {
                     int fib = num1 + num2;
                     System.out.print(fib + " ");
                     num1 = num2;
@@ -114,15 +118,33 @@ public class Medidas {
         }
 
     }
-    public static void contagemRegressiva(){
+
+    public static void contagemRegressiva() {
         System.out.print("Começar a contagem a partir de qual número? ");
         int numero = entrada.nextInt();
 
         System.out.print("Diminuindo de quantos em quantos números por vez? ");
         int decrescimo = entrada.nextInt();
 
-        for (int i= numero; i>= 1; i-= decrescimo){
-             System.out.println(i);
+        for (int i = numero; i >= 1; i -= decrescimo) {
+            System.out.println(i);
+        }
+    }
+
+    public static void divisaoPorZero() {
+        try {
+        System.out.println("Qual é o dividendo? (Número a ser divido) ");
+        byte dividendo = entrada.nextByte();
+        System.out.println("Qual é o divisor? ");
+        byte divisor = entrada.nextByte();
+
+            System.out.println("O resultado é: "+ dividendo / divisor);
+        }
+        catch (Exception e) {
+            System.out.println("Mensagem temporária em inglês: " + e.getMessage());
+        }
+        finally {
+            System.out.println("Por hoje é só pessoal");
         }
     }
 }
